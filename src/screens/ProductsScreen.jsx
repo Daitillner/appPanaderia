@@ -1,12 +1,15 @@
 import { Button, StyleSheet, Text, View } from "react-native";
 import React from 'react';
  
-const ProductsScreen = ({navigation}) =>{
+const ProductsScreen = ({ navigation, route }) => {
 return (
     <View>
-        <Text>Category Bread Screen</Text>
-        <Button title="Navegar a Detail" onPress={()=> navigation.navigate("Detail")}/>
-    </View>
+        <Text>{route.params.name}</Text>
+        <Button 
+            title="Navegar a Detail"
+            onPress={()=> navigation.navigate("Detail")}
+    />
+  </View>
 );
 
 };

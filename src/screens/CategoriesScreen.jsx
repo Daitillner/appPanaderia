@@ -1,28 +1,28 @@
 import {  FlatList, StyleSheet, View } from "react-native";
-import { categories }  from "../data/categories";
+import { CATEGORIES }  from "../data/categories";
 
 import React from 'react';
 import CategoriesItem from "../components/CategoriesItem";
 
  
 const CategoriesScreen = ({ navigation }) => {
-    const handleSelectedCategory = (item) => {
-       navigation.navigate("Products", {
+    const handleSelectedCategory = item => {
+        navigation.navigate("Products", {
         categoryId: item.id,
         name: item.title, 
        });
     };
 
     const renderCategoriesItem = ({ item }) => (
-        <View>
+        <View style={styles.categoriesContainer}>
             <CategoriesItem item={item} onSelected={handleSelectedCategory} />
         </View> 
     );
 
     return (
-        <View>
+        <View style={styles.container}>
         <FlatList 
-        data={categories} 
+        data={CATEGORIES} 
         renderItem={renderCategoriesItem} 
         keyExtractor={item=> item.id} 
         />
@@ -33,4 +33,15 @@ const CategoriesScreen = ({ navigation }) => {
 
 export default CategoriesScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "white", 
+    },
+    categoriesContainer: {
+        padding: 15,
+        height: 150, 
+    },
+});

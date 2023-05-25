@@ -17,12 +17,12 @@ return (
     <Stack.Navigator
         initialRouteName="Home" 
         screenOptions={{
-        headerStyle: {
-        backgroundColor: COLORS.primary,
+          headerStyle: {
+            backgroundColor: COLORS.primary,
         },
         headerTintColor: COLORS.quaternary,
         headerTitleStyle: {
-        fontWeight: "bold",
+          fontWeight: "bold",
         },
     }}
   >
@@ -31,11 +31,17 @@ return (
      name='Home'
      component={CategoriesScreen} 
      options={{
-     title:"Categories",
+       title:"Categories",
     }}
-    />
-    <Stack.Screen name='Products' component={ProductsScreen} />
-    <Stack.Screen name='Details' component={DetailsScreen} />
+ />
+    <Stack.Screen 
+      name='Products' 
+      component={ProductsScreen}
+      options={({ route }) => ({
+        title: route.params.name,
+    })}
+ />
+     <Stack.Screen name='Details' component={DetailsScreen} />
     </Stack.Navigator>
    </NavigationContainer>
  );
@@ -44,4 +50,3 @@ return (
 
 export default ShopNavigator;
 
-const styles = StyleSheet.create({});
