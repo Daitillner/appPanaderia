@@ -1,17 +1,36 @@
-import { Button, StyleSheet, Text, View } from "react-native"
-import React from 'react'
+import {  FlatList, StyleSheet, View } from "react-native";
+import { categories }  from "../data/categories";
+
+import React from 'react';
+import CategoriesItem from "../components/CategoriesItem";
 
  
-const CategoriesScreen = ({navigation}) =>{
-return (
-    <View>
-        <Text>Categories Screen</Text>
-        <Button title="Navegar a Bread" onPress={()=> navigation.navigate("Bread")}/>
-    </View>
-)
+const CategoriesScreen = ({ navigation }) => {
+    const handleSelectedCategory = (item) => {
+       navigation.navigate("Products", {
+        categoryId: item.id,
+        name: item.title, 
+       });
+    };
 
-}
+    const renderCategoriesItem = ({ item }) => (
+        <View>
+            <CategoriesItem item={item} onSelected={handleSelectedCategory} />
+        </View> 
+    );
 
-export default CategoriesScreen
+    return (
+        <View>
+        <FlatList 
+        data={categories} 
+        renderItem={renderCategoriesItem} 
+        keyExtractor={item=> item.id} 
+        />
+        </View>
+    );
 
-const styles = StyleSheet.create({})
+  };
+
+export default CategoriesScreen;
+
+const styles = StyleSheet.create({});

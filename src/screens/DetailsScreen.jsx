@@ -1,0 +1,16 @@
+import { StyleSheet, Text, View } from "react-native";
+import React from 'react';
+ 
+function DetailsScreen() {
+    return (
+        <View>
+            <Text>Aqui va el detalle</Text>
+
+        </View>
+    );
+
+}
+
+export default DetailsScreen;
+
+const styles = StyleSheet.create({}) ;
