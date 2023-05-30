@@ -7,7 +7,7 @@ import CategoriesItem from "../components/CategoriesItem";
  
 const CategoriesScreen = ({ navigation }) => {
     const handleSelectedCategory = item => {
-        navigation.navigate("Products", {
+       navigation.navigate("Products", {
         categoryId: item.id,
         name: item.title, 
        });

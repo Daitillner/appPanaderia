@@ -3,6 +3,8 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import ShopNavigator from './src/navigation/ShopNavigator';
+import { NavigationContainer } from '@react-navigation/native';
+import BottomTabNavigator from './src/navigation/BottomTabNavigator';
 
 
 export default function App() {
@@ -13,41 +15,31 @@ export default function App() {
 
 
   const onPortrait = () => {
-    const dim = Dimensions.get("screen")
-    return dim.height> dim.width
-  }
+    const dim = Dimensions.get("screen");
+    return dim.height> dim.width;
+  };
    
- //console.log(isPortrait); 
+ console.log(isPortrait); 
 
-  useEffect(()=> {
-  Dimensions.addEventListener('change', statePortrait )
-  return () => {
-    Dimensions.removeEventListener('change', statePortrait)
-  }
+  useEffect(() => {
+   Dimensions.addEventListener('change', statePortrait );
+     return () => {
+      Dimensions.removeEventListener('change', statePortrait);
+  };
+}, []);
 
-}, [])
-
-
-
-  const [Loaded] = useFonts({
+  const [loaded] = useFonts({
     OpenSans: require('./src/assets/fonts/OpenSans-Bold.ttf'),
-    OpenSansRegular: require('./src/assets/fonts/OpenSans-Regular.ttf')
-  })
+    OpenSansRegular: require('./src/assets/fonts/OpenSans-Regular.ttf'),
+  }); 
 
-  //if (!Loaded) return null
+  if (!loaded) return null;
 
   return (
-    <ShopNavigator />
-    //<View style={styles.container}>
-      //{
-       // isPortrait?
-         // <Text style={styles.texto}>Vertical</Text>
-          //:
-          //<Text style={styles.texto2}>Horizontal</Text>
+    <NavigationContainer>
+      <BottomTabNavigator />
+    </NavigationContainer>
 
-    //}
-     // <StatusBar style="auto" />
-    //</View>
   );
 }
 
@@ -58,14 +50,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
- // texto:{
-   // fontFamily: "OpenSansBold",
+  texto:{
+   fontFamily: "OpenSansBold",
 
- // },
+  },
 
- // texto2:{
-   // fontFamily: "OpenSansRegular",
+  texto2:{
+    fontFamily: "OpenSansRegular",
 
- // },
+ },
 
 });

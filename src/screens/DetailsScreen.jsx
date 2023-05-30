@@ -1,15 +1,19 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from 'react';
  
-function DetailsScreen() {
+const DetailsScreen = ({route}) => {
+const bread = route.params.product;
+
     return (
         <View>
-            <Text>Aqui va el detalle</Text>
+            <Text>{bread.name}</Text>
+            <Text>{bread.description}</Text>
+            <Text>{bread.price}</Text>
 
         </View>
     );
 
-}
+};
 
 export default DetailsScreen;
 
