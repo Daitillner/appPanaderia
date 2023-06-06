@@ -26,7 +26,8 @@ export default BottomTabNavigator = () => {
             ),
           }}
         />
-        <BottomTabs.Screen name="Cart" 
+        <BottomTabs.Screen 
+         name="Cart" 
           component={CartNavigator}
           options={{
             tabBarIcon: () => (
@@ -37,7 +38,20 @@ export default BottomTabNavigator = () => {
             ),
           }}
         />
+        <BottomTabs.Screen
+          name="OrdersTab" 
+          component={odersNavigator}
+          options={{
+            tabBarIcon: () => (
+                <View>
+                    <Ionicons name="list" size={24} color="black" />
+                    <Text>Ordenes</Text>
+                </View>
+            ),
+          }}
+        />
         </BottomTabs.Navigator>
+        
 
     );
 };
