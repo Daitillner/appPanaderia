@@ -19,4 +19,4 @@ export const CART = [
     quantity: 2, 
 },
     
-]
+];
